@@ -549,8 +549,41 @@
 					console.log('\n\nScript Data:\n', capturedScript)
 					console.groupEnd()
 				}
-
-				
+				const message = (confirmPermission, [url, session, reads]) => {
+					return '🤮 Fingerprinting detected!'
+					+ (confirmPermission ? ' OK to allow or Cancel to abort\n' : '\n')
+					+ '🛡 ' + session + '\n'
+					+ '💩 Creepy script: ' + url + '\n'
+					+ '🧐\n' + reads + '\n...' + '\n'
+				}
+				if ((creeps && !creeps[url]) || !sessionPermission) {
+					let permission = null
+					const creepyOrigin = sessionStorage.getItem(sessionName + 'creepyOrigin')
+					if (unknown && !creepyOrigin) {
+						sessionStorage.setItem(sessionName + 'creepyOrigin', true)
+						//const { origin } = location
+						//alert(message(false, [origin, sessionProtection, readsFormatted]))
+					}
+					else if (!unknown) {
+						//permission = confirm(message(true, [url, sessionProtection, readsFormatted]))
+					} 
+					if (permission) {
+						sessionStorage.setItem(sessionName + 'permit', 'allow')
+					}
+					else if (permission === false) {
+						sessionStorage.setItem(sessionName + 'permit', 'deny')
+						sessionStorage.setItem(sessionName + 'error', JSON.stringify({ timestamp: +(new Date()), type: errorType, message: randomError }))
+						if (creeps && !unknown) {
+							creeps[url] = true
+							sessionStorage.setItem(sessionName + 'creeps', JSON.stringify(creeps))
+						}
+						else if (!unknown) {
+							sessionStorage.setItem(sessionName + 'creeps', JSON.stringify({ [url]: true }))
+						}
+						const error = abort(errorType, randomError)
+						throw error
+					}
+				}
 			}
 		}
 		return
