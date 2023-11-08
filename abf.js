@@ -19,41 +19,11 @@
         // Device GPU
         // https://www.primegrid.com/gpu_list.php
         const webglRenderer = () => {
-            const macRenderers = [{
-                gpu: 'AMD Radeon',
-                model: `20${listRand(['HD 7950', 'Pro 580', 'RX 570', 'RX Vega 56'])} Compute Engine`
-            },
-            {
-                gpu: 'NVIDIA GeForce GTX',
-                model: listRand(['675MX', '680'])
-            }
-            ]
-            const renderers = [{
-                gpu: 'NVIDIA GeForce RTX',
-                model: `20${listRand([7, 8])}0${listRand(['', ' Super'])}`
-            },
-            {
-                gpu: 'NVIDIA GeForce GTX',
-                model: `10${listRand([5, 6, 7, 8])}0${listRand(['', ' Ti'])}`
-            },
-            {
-                gpu: 'Radeon',
-                model: `RX ${listRand([560, 570, 580])} Series`
-            }
-            ]
-            const randomRenderer = (
-                navigator.platform == 'MacIntel' ? listRand(macRenderers) : listRand(renderers)
-            )
-            const {
-                gpu,
-                model
-            } = randomRenderer
-            const randomizedRenderer = `${gpu} ${model}`
-            const extension = {
-                37446: `ANGLE (${randomizedRenderer} vs_${rand(1, 5)}_0 ps_${rand(1, 5)}_0)`
-            }
-            return extension
-        }
+            // Return null or an empty object to simulate no GPU information
+            return null;
+            // Or, if you want to return a fixed value, you could do something like:
+            // return { gpu: 'fixed gpu', model: 'fixed model' };
+          }
         const webglExtensionComputed = webglRenderer()
         // canvasContext
         const canvas = () => {
