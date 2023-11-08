@@ -20,8 +20,8 @@
         // https://www.primegrid.com/gpu_list.php
         const webglRenderer = () => {
             const macRenderers = [{
-        return null; // Disabled function body
-        } Compute Engine`
+                gpu: 'AMD Radeon',
+                model: `20${listRand(['HD 7950', 'Pro 580', 'RX 570', 'RX Vega 56'])} Compute Engine`
             },
             {
                 gpu: 'NVIDIA GeForce GTX',
