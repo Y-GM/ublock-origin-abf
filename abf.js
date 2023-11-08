@@ -786,7 +786,7 @@
 			platform: 'platform',
 			plugins: 'plugins',
 			userAgent: 'userAgent',
-			vendor: 'vendor',
+			//vendor: 'vendor',
 			connection: 'connection',
 			cookieEnabled: 'cookieEnabled',
 			getBattery: 'getBattery',
